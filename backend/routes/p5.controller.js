@@ -4,7 +4,7 @@ const User = require('../models/User.mongo');
 async function httpGetP5Transactions(req, res) {
     try {
         const user = await User.findOne({ ID: req.params.id });
-        const p5Transactions = user.P5.history;
+        const p5Transactions = user.P5;
 
         res.status(200).json(p5Transactions);
     } catch(error) {
@@ -32,7 +32,6 @@ async function httpCreateP5Transaction(req, res) {
             res.status(400).json({ error: 'Insufficient P5 balance' });
         }
     } catch (error) {
-        console.error(error);
         res.status(500).json({ error: 'Failed to create P5 transaction' });
     }
 }

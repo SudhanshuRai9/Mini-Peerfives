@@ -16,6 +16,7 @@ mongoose.connect(DB).then(() => {
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+app.set("view engine", "ejs");
 
 app.use("/api", p5Routes);
 app.use("/api", rewardsRoutes);
